@@ -1,0 +1,156 @@
+<?xml version="1.0"?>
+<Container version="2">
+    <Name>Pixark</Name>
+    <Repository>unraider/steamcmd:pixark</Repository>
+    <Registry>https://hub.docker.com/r/unraider/steamcmd/</Registry>
+    <Network>bridge</Network>
+    <Beta>True</Beta>
+    <MyIP/>
+    <Shell>sh</Shell>
+    <Privileged>false</Privileged>
+    <Support/>
+    <Project>https://www.steampowered.com/</Project>
+    <Overview>This Docker will download and install SteamCMD. It will also install Pixark server and run it. SERVERNAME: 'The Forest Docker' SERVERPASSWORD: 'Docker' ADMINPASSWORD: 'adminDocker' (you can change this in your SERVERFOLDER/config/config.cfg)&#xD;
+        &#xD;
+        BETA Warning: Since this Docker runs with WINE it's marked as BETA, i can not guarantee if the server is running always as expected!&#xD;
+        Also i recommend you to give this docker a Static IP (Custom Mode) and that you don't change any port unless you know what you are doing!&#xD;
+        &#xD;
+        PUBLIC PLAY: If you want that your server is public listed and easily accessable you must add '-serversteamaccount YOURTOKEN' to the GAME_PARAMS (without the quotes and replace YOURTOKEN with your token).&#xD;
+        Create your token here: https://steamcommunity.com/dev/managegameservers (please note that you must generate the token for the APPID: '242760' and every gameserver needs it's own token!!!)&#xD;
+        &#xD;
+        ATTENTION: First Startup can take very long since it downloads the gameserver files!&#xD;
+        &#xD;
+        Update Notice: Simply restart the container if a newer version of the game is available.&#xD;
+        &#xD;
+        You can also run multiple servers with only one SteamCMD directory!</Overview>
+    <Category>GameServers:</Category>
+    <WebUI/>
+    <TemplateURL>false</TemplateURL>
+    <Icon>https://raw.githubusercontent.com/codegeek/docker-templates/master/codegeek/images/pixark.png</Icon>
+    <ExtraParams>--restart=unless-stopped</ExtraParams>
+    <PostArgs/>
+    <CPUset/>
+    <DateInstalled/>
+    <Description>This Docker will download and install SteamCMD. It will also install The Forest and run it.&#xD;
+        &#xD;
+        BETA Warning: Since this Docker runs with WINE it's marked as BETA, i can not guarantee if the server is running always as expected!&#xD;
+        Also i recommend you to give this docker a Static IP (Custom Mode) and that you don't change any port unless you know what you are doing!&#xD;
+        &#xD;
+        ATTENTION: First Startup can take very long since it downloads the gameserver files!&#xD;
+        &#xD;
+        Update Notice: Simply restart the container if a newer version of the game is available.&#xD;
+        &#xD;
+        You can also run multiple servers with only one SteamCMD directory!</Description>
+    <Networking>
+        <Mode>bridge</Mode>
+        <Publish>
+            <Port>
+                <HostPort>27015</HostPort>
+                <ContainerPort>27015</ContainerPort>
+                <Protocol>tcp</Protocol>
+            </Port>
+            <Port>
+                <HostPort>27015</HostPort>
+                <ContainerPort>27015</ContainerPort>
+                <Protocol>udp</Protocol>
+            </Port>
+            <Port>
+                <HostPort>27016</HostPort>
+                <ContainerPort>27016</ContainerPort>
+                <Protocol>tcp</Protocol>
+            </Port>
+            <Port>
+                <HostPort>27016</HostPort>
+                <ContainerPort>27016</ContainerPort>
+                <Protocol>udp</Protocol>
+            </Port>
+            <Port>
+                <HostPort>27017</HostPort>
+                <ContainerPort>27017</ContainerPort>
+                <Protocol>tcp</Protocol>
+            </Port>
+            <Port>
+                <HostPort>27017</HostPort>
+                <ContainerPort>27017</ContainerPort>
+                <Protocol>udp</Protocol>
+            </Port>
+        </Publish>
+    </Networking>
+    <Data>
+        <Volume>
+            <HostDir>/mnt/user/appdata/steamcmd</HostDir>
+            <ContainerDir>/serverdata/steamcmd</ContainerDir>
+            <Mode>rw</Mode>
+        </Volume>
+        <Volume>
+            <HostDir>/mnt/cache/appdata/pixark</HostDir>
+            <ContainerDir>/serverdata/serverfiles</ContainerDir>
+            <Mode>rw</Mode>
+        </Volume>
+    </Data>
+    <Environment>
+        <Variable>
+            <Value>824360</Value>
+            <Name>GAME_ID</Name>
+            <Mode/>
+        </Variable>
+        <Variable>
+            <Value>-NoBattlEye -CubePort=15000 -cubeworld=world -nosteamclient -NoHangDetection -game</Value>
+            <Name>GAME_PARAMS</Name>
+            <Mode/>
+        </Variable>
+        <Variable>
+            <Value>-server -log</Value>
+            <Name>GAME_PARAMS_EXTRA</Name>
+            <Mode/>
+        </Variable>
+        <Variable>
+            <Value>20</Value>
+            <Name>MAX_PLAYERS</Name>
+            <Mode/>
+        </Variable>
+        <Variable>
+            <Value/>
+            <Name>SERVER_NAME</Name>
+            <Mode/>
+        </Variable>
+        <Variable>
+            <Value/>
+            <Name>SERVER_PASSWORD</Name>
+            <Mode/>
+        </Variable>
+        <Variable>
+            <Value/>
+            <Name>SERVER_ADMIN_PASSWORD</Name>
+            <Mode/>
+        </Variable>
+        <Variable>
+            <Value>99</Value>
+            <Name>UID</Name>
+            <Mode/>
+        </Variable>
+        <Variable>
+            <Value>100</Value>
+            <Name>GID</Name>
+            <Mode/>
+        </Variable>
+    </Environment>
+    <Labels/>
+    <Config Name="SteamCMD" Target="/serverdata/steamcmd" Default="" Mode="rw" Description="Container Path: /serverdata/steamcmd" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/steamcmd</Config>
+    <Config Name="ServerFiles" Target="/serverdata/serverfiles" Default="" Mode="rw" Description="Container Path: /serverdata/serverfiles" Type="Path" Display="always" Required="true" Mask="false">/mnt/cache/appdata/pixark</Config>
+    <Config Name="Game ID" Target="GAME_ID" Default="" Mode="" Description="The GAME_ID that the container download at startup.&#13;&#10;(https://developer.valvesoftware.com/wiki/Dedicated_Servers_List)" Type="Variable" Display="always" Required="true" Mask="false">824360</Config>
+    <Config Name="Game parameters" Target="GAME_PARAMS" Default="" Mode="" Description="Enter your start up commands for the server." Type="Variable" Display="always-hide" Required="false" Mask="false"/>
+    <Config Name="Extra Game parameters" Target="GAME_PARAMS_EXTRA" Default="" Mode="" Description="Enter your start up commands for the server." Type="Variable" Display="always-hide" Required="false" Mask="false"/>
+    <Config Name="Max Players" Target="MAX_PLAYERS" Default="" Mode="" Description="Maximum number of players allowed in the server." Type="Variable" Display="always-hide" Required="false" Mask="false">20</Config>
+    <Config Name="Server name" Target="SERVER_NAME" Default="" Mode="" Description="Server name." Type="Variable" Display="always" Required="true" Mask="false">Pixark</Config>
+    <Config Name="Server password" Target="SERVER_PASSWORD" Default="" Mode="" Description="Server password required to join. Leave blank to enable public joins." Type="Variable" Display="always" Required="false" Mask="true"/>
+    <Config Name="Server Admin password" Target="SERVER_ADMIN_PASSWORD" Default="" Mode="" Description="Server admin password." Type="Variable" Display="always" Required="false" Mask="true"/>
+    <Config Name="TCP1 - Game Port" Target="27015" Default="" Mode="tcp" Description="Container Port: 27015" Type="Port" Display="always" Required="true" Mask="false">27015</Config>
+    <Config Name="UDP1 - Game Port" Target="27015" Default="" Mode="udp" Description="Container Port: 27015" Type="Port" Display="always" Required="true" Mask="false">27015</Config>
+    <Config Name="TCP2 - Steam Query Port" Target="27016" Default="" Mode="tcp" Description="Container Port: 27016" Type="Port" Display="always" Required="true" Mask="false">27016</Config>
+    <Config Name="UDP2 - Steam Query Port" Target="27016" Default="" Mode="udp" Description="Container Port: 27016" Type="Port" Display="always" Required="true" Mask="false">27016</Config>
+    <Config Name="TCP3 - RCON Port" Target="27017" Default="" Mode="tcp" Description="Container Port: 27017" Type="Port" Display="always" Required="false" Mask="false">27017</Config>
+    <Config Name="UDP3 - RCON Port" Target="27017" Default="" Mode="udp" Description="Container Port: 27017" Type="Port" Display="always" Required="false" Mask="false">27017</Config>
+    <Config Name="UID" Target="UID" Default="" Mode="" Description="Container Variable: UID" Type="Variable" Display="advanced-hide" Required="true" Mask="false">99</Config>
+    <Config Name="GID" Target="GID" Default="" Mode="" Description="Container Variable: GID" Type="Variable" Display="advanced-hide" Required="true" Mask="false">100</Config>
+</Container>
