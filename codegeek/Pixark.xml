@@ -150,7 +150,7 @@
     <Config Name="UDP2 - Steam Query Port" Target="27016" Default="" Mode="udp" Description="Container Port: 27016" Type="Port" Display="always" Required="true" Mask="false">27016</Config>
     <Config Name="TCP3 - RCON Port" Target="27017" Default="" Mode="tcp" Description="Container Port: 27017" Type="Port" Display="always" Required="false" Mask="false">27017</Config>
     <Config Name="UDP3 - RCON Port" Target="27017" Default="" Mode="udp" Description="Container Port: 27017" Type="Port" Display="always" Required="false" Mask="false">27017</Config>
-    <Config Name="Game parameters" Target="GAME_PARAMS" Default="" Mode="" Description="Enter your start up commands for the server." Type="Variable" Display="advanced-hide" Required="false" Mask="false">-NoBattlEye -CubePort=15000 -cubeworld=world -nosteamclient -NoHangDetection -game</Config>
+    <Config Name="GAME_PARAMS" Target="GAME_PARAMS" Default="" Mode="" Description="Enter your start up commands for the server." Type="Variable" Display="advanced-hide" Required="true" Mask="false">-NoBattlEye -CubePort=15000 -cubeworld=world -nosteamclient -NoHangDetection -game</Config>
     <Config Name="UID" Target="UID" Default="" Mode="" Description="Container Variable: UID" Type="Variable" Display="advanced-hide" Required="true" Mask="false">99</Config>
     <Config Name="GID" Target="GID" Default="" Mode="" Description="Container Variable: GID" Type="Variable" Display="advanced-hide" Required="true" Mask="false">100</Config>
 </Container>
