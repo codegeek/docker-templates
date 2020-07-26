@@ -14,7 +14,7 @@
         &#xD;
         Drone is a self-service Continuous Delivery platform for busy development teams.</Overview>
     <Category>Tools:Utilities</Category>
-    <WebUI>http://[IP]:[PORT:4000]</WebUI>
+    <WebUI>http://[IP]:[PORT:80]</WebUI>
     <TemplateURL/>
     <Icon>https://raw.githubusercontent.com/codegeek/docker-templates/master/codegeek/images/drone-logo-png-dark-512.png</Icon>
     <ExtraParams>--restart=unless-stopped</ExtraParams>
@@ -61,7 +61,7 @@
             <Mode/>
         </Variable>
         <Variable>
-            <Value/>
+            <Value>false</Value>
             <Name>DRONE_GIT_ALWAYS_AUTH</Name>
             <Mode/>
         </Variable>
@@ -83,13 +83,13 @@
     </Environment>
     <Labels/>
     <Config Name="Data Storage Path" Target="/data" Default="/mnt/user/appdata/drone" Mode="rw" Description="" Type="Path" Display="advanced" Required="true" Mask="false">/mnt/user/appdata/drone</Config>
-    <Config Name="HTTP Port" Target="80" Default="80" Mode="tcp" Description="Container HTTP Port: 80" Display="always" Required="true" Mask="false">80</Config>
-    <Config Name="HTTPS Port" Target="443" Default="443" Mode="tcp" Description="Container HTTPS Port: 443" Display="always" Required="true" Mask="false">443</Config>
+    <Config Name="HTTP Port" Target="80" Default="80" Mode="tcp" Description="Container HTTP Port: 80" Type="Port" Display="always" Required="true" Mask="false">80</Config>
+    <Config Name="HTTPS Port" Target="443" Default="443" Mode="tcp" Description="Container HTTPS Port: 443" Type="Port" Display="always" Required="true" Mask="false">443</Config>
     <Config Name="Gitea Oauth Client ID" Target="DRONE_GITEA_CLIENT_ID" Default="" Mode="" Description="" Type="Variable" Display="always" Required="true" Mask="false"/>
     <Config Name="Gitea Oauth Client Secret" Target="DRONE_GITEA_CLIENT_SECRET" Default="" Mode="" Description="" Type="Variable" Display="always" Required="true" Mask="false"/>
     <Config Name="Gitea server address" Target="DRONE_GITEA_SERVER" Default="https://gitea.company.com" Mode="" Description="" Type="Variable" Display="always" Required="true" Mask="false">https://gitea.company.com</Config>
-    <Config Name="Always Authenticate" Target="DRONE_GIT_ALWAYS_AUTH" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false"/>
-    <Config Name="RPC Secret" Target="DRONE_RPC_SECRET" Default="" Mode="" Description="" Type="Variable" Display="always" Required="true" Mask="true"/>
+    <Config Name="Always Authenticate" Target="DRONE_GIT_ALWAYS_AUTH" Default="false" Mode="" Description="" Type="Variable" Display="advanced" Required="false" Mask="false">false</Config>
+    <Config Name="RPC Secret" Target="DRONE_RPC_SECRET" Default="" Mode="" Description="" Type="Variable" Display="always" Required="true" Mask="false"/>
     <Config Name="Server Host" Target="DRONE_SERVER_HOST" Default="" Mode="" Description="" Type="Variable" Display="always" Required="true" Mask="false"/>
     <Config Name="Serer Protocol" Target="DRONE_SERVER_PROTO" Default="http" Mode="" Description="" Type="Variable" Display="advanced" Required="false" Mask="false">http</Config>
 </Container>
