@@ -76,7 +76,7 @@
             <Mode/>
         </Variable>
         <Variable>
-            <Value>http</Value>
+            <Value>https</Value>
             <Name>DRONE_SERVER_PROTO</Name>
             <Mode/>
         </Variable>
@@ -90,6 +90,6 @@
     <Config Name="Gitea server address" Target="DRONE_GITEA_SERVER" Default="https://gitea.company.com" Mode="" Description="" Type="Variable" Display="always" Required="true" Mask="false">https://gitea.company.com</Config>
     <Config Name="Always Authenticate" Target="DRONE_GIT_ALWAYS_AUTH" Default="false" Mode="" Description="" Type="Variable" Display="advanced" Required="false" Mask="false">false</Config>
     <Config Name="RPC Secret" Target="DRONE_RPC_SECRET" Default="" Mode="" Description="" Type="Variable" Display="always" Required="true" Mask="false"/>
-    <Config Name="Server Host" Target="DRONE_SERVER_HOST" Default="" Mode="" Description="" Type="Variable" Display="always" Required="true" Mask="false"/>
-    <Config Name="Serer Protocol" Target="DRONE_SERVER_PROTO" Default="http" Mode="" Description="" Type="Variable" Display="advanced" Required="false" Mask="false">http</Config>
+    <Config Name="Server Host" Target="DRONE_SERVER_HOST" Default="drone.company.com" Mode="" Description="" Type="Variable" Display="always" Required="true" Mask="false">drone.company.com</Config>
+    <Config Name="User Facing Protocol" Target="DRONE_SERVER_PROTO" Default="https" Mode="" Description="" Type="Variable" Display="advanced" Required="false" Mask="false">https</Config>
 </Container>
